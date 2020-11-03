@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   list: {
-    width: 250,
+    width: 238,
     '& .MuiSvgIcon-root': {
       color: '#0048B4'
     },
@@ -74,7 +74,9 @@ const Header = (props) => {
               <Menu />
             </IconButton>
           </Hidden>
-          <GitHub />
+          <IconButton>
+            <GitHub />
+          </IconButton>
         </Toolbar>
       </AppBar>
 
@@ -105,7 +107,7 @@ const Header = (props) => {
             </NavLink>
             <Divider />
             <List className={classes.list}>
-              <NavLink to="/documentation">
+              <NavLink to="/installation">
                 <ListItem button>
                   <ListItemText>
                     <Typography variant="body2">Installation</Typography>
@@ -128,13 +130,14 @@ const Header = (props) => {
               <ListItem button>
                 <ListItemText>
                   <Typography variant="h4">Bloom<i>UI</i></Typography>
-                  <Typography variant="body2">React Material UI Kit</Typography>
+                  {/* <Typography variant="body2">React Material UI Kit</Typography> */}
+                  <Typography variant="caption">{process.env.VERSION}</Typography>
                 </ListItemText>
               </ListItem>
             </NavLink>
             <Divider />
             <List className={classes.list}>
-              <NavLink to="/documentation">
+              <NavLink to="/installation">
                 <ListItem button>
                   <ListItemText>
                     <Typography variant="body2">Installation</Typography>
