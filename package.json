@@ -1,6 +1,6 @@
 {
   "name": "bloom-ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.11",
@@ -15,6 +15,7 @@
     "formik": "^2.1.4",
     "mui-datatables": "^2.14.0",
     "mui-rff": "^2.1.10",
+    "node-sass": "^4.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
