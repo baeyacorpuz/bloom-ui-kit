@@ -1,4 +1,5 @@
-import { Drawer, Hidden, List, ListItem, ListItemText, makeStyles, Typography, useTheme } from '@material-ui/core';
+import { Collapse, Drawer, Hidden, List, ListItem, ListItemText, makeStyles, Typography, useTheme } from '@material-ui/core';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu } from '../../routes/Menu';
@@ -33,13 +34,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   list: {
+    cursor: 'pointer',
     width: drawerWidth,
     '& .MuiSvgIcon-root': {
       color: '#0048B4'
     },
     '& .MuiListItem-root': {
       textTransform: 'uppercase',
-      display: 'block'
     },
     // & .MuiListItem-root
   },
@@ -55,47 +56,19 @@ const Header = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState({});
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   }
 
-  const container = window !== undefined ? () => window().document.body : undefined;
-
-  const handleDropdown = (event) => {
-    const el = event.currentTarget;
-
-    const parent = el.parentNode;
-    console.log(parent.childNodes)
-
-    parent.childNodes.forEach(element => {
-      if (element !== el) {
-        element.classList.remove("open");
-      }
+  const handleClick = (key) => {
+    setOpen({
+      [key]: !open[key]
     })
+  };
 
-    if (el.classList.contains("treeview")) {
-      if (!el.classList.contains("open")) {
-        console.log(el)
-        el.classList.add("open");
-        el.classList.add("menu-open");
-        el.getElementsByTagName("ul")[0].style.display = "block";
-      } else {
-        el.classList.remove("open");
-        el.classList.remove("menu-open");
-        el.getElementsByTagName("ul")[0].style.display = "none";
-      }
-    }
-  }
-
-  const navigationOnClick = (event) => {
-    if (event.currentTarget.classList.contains("treeview-option")) {
-      event.currentTarget.parentNode.parentNode.classList.add("active");
-    } else {
-      event.currentTarget.classList.add("active");
-    }
-    event.stopPropagation();
-  }
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <>
@@ -156,24 +129,27 @@ const Header = (props) => {
             <List className={classes.list}>
               {Menu.map((item, index) => (
                 <div key={index}>
-                  <ListItem className="treeview" button onClick={handleDropdown}>
+                  <ListItem onClick={() => handleClick(item.to)}>
                     <ListItemText>
                       <Typography variant="body2">{item.label}</Typography>
                     </ListItemText>
-                    <List className="treeview-menu">
-                      {item.items ? (
-                        item.items.map((subItem) => (
-                          <NavLink key={subItem.key} className="treeview-option" to={subItem.key} onClick={navigationOnClick}>
+                    {open[item.to] ? <ExpandLess /> : <ExpandMore />}
+                  </ListItem>
+                  <Collapse in={open[item.to]} timeout="auto" unmountOnExit disableStrictModeCompat>
+                    {item.items ? (
+                      item.items.map((subItem) => (
+                        <List disablePadding component="div" key={subItem.key}>
+                          <NavLink key={subItem.key} to={subItem.key} >
                             <ListItem>
                               <ListItemText>
                                 <Typography variant="body2">{subItem.label}</Typography>
                               </ListItemText>
                             </ListItem>
                           </NavLink>
-                        ))
-                      ) : null}
-                    </List>
-                  </ListItem>
+                        </List>
+                      ))
+                    ) : null}
+                  </Collapse>
                 </div>
               ))}
             </List>

@@ -1,10 +1,15 @@
-import { Button, Container, Grid, Paper, Typography } from '@material-ui/core';
+import { Button, Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router';
 
+const useStyles = makeStyles((theme) => ({
+
+}))
+
 const Home = () => {
-  const history = useHistory()
+  const classes = useStyles();
+  const history = useHistory();
 
   return (
     <>
@@ -17,10 +22,15 @@ const Home = () => {
       </Helmet>
 
       <Container maxWidth="lg">
-        <Grid container>
-          <Grid item xs={12}>
-            <Paper variant="outlined">
-              
+        <Grid container spacing={1}>
+          <Grid item md={9}>
+            <Paper variant="elevation">
+              {/* <Typography variant="h3">Hello, user!</Typography> */}
+            </Paper>
+          </Grid>
+          <Grid item md={3}>
+            <Paper variant="elevation">
+              {/* <Typography variant="h3">Hello, user!</Typography> */}
             </Paper>
           </Grid>
         </Grid>

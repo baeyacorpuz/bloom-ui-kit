@@ -93,11 +93,6 @@ const theme = createMuiTheme({
         borderRight: "none"
       }
     },
-    MuiPaper: {
-      root: {
-        padding: 8
-      }
-    }
   }
 });
 
