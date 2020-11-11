@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from '@material-ui/core';
+import { Button, Container, Grid, Paper, Typography } from '@material-ui/core';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router';
@@ -19,9 +19,9 @@ const Home = () => {
       <Container maxWidth="lg">
         <Grid container>
           <Grid item xs={12}>
-            <Typography variant="h1">Bloom UI Kit</Typography>
-            <Typography variant="h1">React</Typography>
-            <Button onClick={() => history.push('/installation')} variant="outlined">Demo</Button>
+            <Paper variant="outlined">
+              
+            </Paper>
           </Grid>
         </Grid>
       </Container>

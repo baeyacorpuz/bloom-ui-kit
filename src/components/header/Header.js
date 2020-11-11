@@ -1,7 +1,8 @@
-import { AppBar, Divider, Drawer, Hidden, IconButton, List, ListItem, ListItemText, makeStyles, Toolbar, Typography, useTheme } from '@material-ui/core';
-import { GitHub, Menu } from '@material-ui/icons';
+import { Drawer, Hidden, List, ListItem, ListItemText, makeStyles, Typography, useTheme } from '@material-ui/core';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Menu } from '../../routes/Menu';
+import "./header.css"
 
 const drawerWidth = 240;
 
@@ -32,19 +33,21 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   list: {
-    width: 238,
+    width: drawerWidth,
     '& .MuiSvgIcon-root': {
       color: '#0048B4'
     },
     '& .MuiListItem-root': {
-      textTransform: 'uppercase'
-    }
+      textTransform: 'uppercase',
+      display: 'block'
+    },
+    // & .MuiListItem-root
   },
   link: {
     '& .MuiListItem-button': {
       height: 70
     }
-  }
+  },
 }))
 
 const Header = (props) => {
@@ -59,26 +62,43 @@ const Header = (props) => {
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
+  const handleDropdown = (event) => {
+    const el = event.currentTarget;
+
+    const parent = el.parentNode;
+    console.log(parent.childNodes)
+
+    parent.childNodes.forEach(element => {
+      if (element !== el) {
+        element.classList.remove("open");
+      }
+    })
+
+    if (el.classList.contains("treeview")) {
+      if (!el.classList.contains("open")) {
+        console.log(el)
+        el.classList.add("open");
+        el.classList.add("menu-open");
+        el.getElementsByTagName("ul")[0].style.display = "block";
+      } else {
+        el.classList.remove("open");
+        el.classList.remove("menu-open");
+        el.getElementsByTagName("ul")[0].style.display = "none";
+      }
+    }
+  }
+
+  const navigationOnClick = (event) => {
+    if (event.currentTarget.classList.contains("treeview-option")) {
+      event.currentTarget.parentNode.parentNode.classList.add("active");
+    } else {
+      event.currentTarget.classList.add("active");
+    }
+    event.stopPropagation();
+  }
+
   return (
     <>
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar className={classes.toolBar}>
-          <Hidden smUp implementation="css">
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              className={classes.menuButton}
-            >
-              <Menu />
-            </IconButton>
-          </Hidden>
-          <IconButton>
-            <GitHub />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
 
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -105,7 +125,6 @@ const Header = (props) => {
                 </ListItemText>
               </ListItem>
             </NavLink>
-            <Divider />
             <List className={classes.list}>
               <NavLink to="/installation">
                 <ListItem button>
@@ -130,20 +149,33 @@ const Header = (props) => {
               <ListItem button>
                 <ListItemText>
                   <Typography variant="h4">Bloom<i>UI</i></Typography>
-                  {/* <Typography variant="body2">React Material UI Kit</Typography> */}
                   <Typography variant="caption">{process.env.VERSION}</Typography>
                 </ListItemText>
               </ListItem>
             </NavLink>
-            <Divider />
             <List className={classes.list}>
-              <NavLink to="/installation">
-                <ListItem button>
-                  <ListItemText>
-                    <Typography variant="body2">Installation</Typography>
-                  </ListItemText>
-                </ListItem>
-              </NavLink>
+              {Menu.map((item, index) => (
+                <div key={index}>
+                  <ListItem className="treeview" button onClick={handleDropdown}>
+                    <ListItemText>
+                      <Typography variant="body2">{item.label}</Typography>
+                    </ListItemText>
+                    <List className="treeview-menu">
+                      {item.items ? (
+                        item.items.map((subItem) => (
+                          <NavLink key={subItem.key} className="treeview-option" to={subItem.key} onClick={navigationOnClick}>
+                            <ListItem>
+                              <ListItemText>
+                                <Typography variant="body2">{subItem.label}</Typography>
+                              </ListItemText>
+                            </ListItem>
+                          </NavLink>
+                        ))
+                      ) : null}
+                    </List>
+                  </ListItem>
+                </div>
+              ))}
             </List>
           </Drawer>
         </Hidden>

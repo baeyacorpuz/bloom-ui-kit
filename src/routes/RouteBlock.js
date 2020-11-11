@@ -1,13 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import Installation from '../components/documentation/Installation';
+import Dashboard from '../components/dashboard/Dashboard';
 import Home from '../components/home/Home';
 
 const RouteBlock = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/installation" component={Installation} />
+      <Route path component={Home} />
     </Switch>
   );
 }

@@ -67,7 +67,7 @@ const theme = createMuiTheme({
 
   props: {
     MuiButtonBase: {
-      disableRipple: false,
+      disableRipple: true,
     },
   },
 
@@ -86,6 +86,16 @@ const theme = createMuiTheme({
       colorPrimary: {
         backgroundColor: '#fff',
         color: '#2c3d63'
+      }
+    },
+    MuiDrawer: {
+      paperAnchorDockedLeft: {
+        borderRight: "none"
+      }
+    },
+    MuiPaper: {
+      root: {
+        padding: 8
       }
     }
   }
