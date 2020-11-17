@@ -23,7 +23,7 @@ const theme = createMuiTheme({
       textTransform: "uppercase"
     },
     subtitle1: {
-      fontSize: 16
+      fontSize: 16,
     },
     subtitle2: {
       fontSize: 14
@@ -35,7 +35,8 @@ const theme = createMuiTheme({
       fontSize: 57
     },
     h3: {
-      fontSize: 48
+      fontSize: 48,
+      fontWeight: '600'
     },
     h4: {
       fontSize: 32
@@ -44,7 +45,8 @@ const theme = createMuiTheme({
       fontSize: 28
     },
     h6: {
-      fontSize: 24
+      fontSize: 24,
+      fontWeight: '600'
     }
   },
 
@@ -75,6 +77,10 @@ const theme = createMuiTheme({
     MuiPaper: {
       root: {
         padding: 0
+      },
+      elevation4: {
+        boxShadow: 'none',
+        border: '#2F3542'
       }
     },
     MuiTypography: {
@@ -88,11 +94,16 @@ const theme = createMuiTheme({
         color: '#2c3d63'
       }
     },
-    MuiDrawer: {
-      paperAnchorDockedLeft: {
-        borderRight: "none"
+    MuiDaTable: {
+      paper: {
+        boxShadow: 'none'
       }
     },
+    MuiButton: {
+      contained: {
+        boxShadow: 'none'
+      }
+    }
   }
 });
 

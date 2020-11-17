@@ -35,3 +35,27 @@ a:-webkit-any-link {
   text-decoration: none;
   color: #0048B4
 }
+
+.MuiListItem-root.open span{
+  font-weight: 800;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #888;
+  background: rgba(47,53,66,.4);
+  border-radius: 100px;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+  height: 6px;
+  border-radius: 100px;
+}
+
+body::backdrop {
+  background-color: #fafafa;
+}
