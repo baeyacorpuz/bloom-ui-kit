@@ -15,7 +15,9 @@ const TablePartHead = () => {
   const classes = useStyles();
   const [exporting, setExporting] = useState(false)
 
-  const handleExportData = () => {}
+  const handleExportData = () => {
+    setExporting(true)
+  }
 
   return (
     <div className={classes.flexEnd}>

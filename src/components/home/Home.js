@@ -1,7 +1,6 @@
-import { Button, Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useHistory } from 'react-router';
 import Divider from '../../assets/images/medicine.svg'
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +41,7 @@ const Home = () => {
               <Typography variant="subtitle2" gutterBottom>5th Ave, Taguig, 1634 Metro Manila</Typography>
             </Grid>
             <Grid item md={4}>
-              <img src={Divider} width="80%" />
+              <img alt="dashboard" src={Divider} width="80%" />
             </Grid>
           </Grid>
         </Paper>

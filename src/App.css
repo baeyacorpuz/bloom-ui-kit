@@ -36,8 +36,13 @@ a:-webkit-any-link {
   color: #0048B4
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .MuiListItem-root.open span{
-  font-weight: 800;
+  font-weight: 700;
+  color: #0048B4
 }
 
 body::-webkit-scrollbar-track {

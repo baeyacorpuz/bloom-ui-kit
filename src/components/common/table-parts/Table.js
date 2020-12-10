@@ -2,7 +2,6 @@ import MUIDataTable from 'mui-datatables';
 import React from 'react';
 
 const Table = ({ options, data, columns }) => {
-  console.log(options, data, columns)
   return (
     <>
       {/* <TablePartHead /> */}

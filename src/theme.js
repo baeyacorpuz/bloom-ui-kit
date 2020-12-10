@@ -75,7 +75,7 @@ const theme = createMuiTheme({
 
   overrides: {
     MuiPaper: {
-      root: {
+      outlined: {
         padding: 0
       },
       elevation4: {
@@ -102,6 +102,31 @@ const theme = createMuiTheme({
     MuiButton: {
       contained: {
         boxShadow: 'none'
+      }
+    },
+    MuiListItem: {
+      dense: {
+        padding: 0,
+        paddingTop: 0,
+        paddingBottom: 0
+      },
+      root: {
+        paddingTop: 0,
+        paddingBottom: 0
+      }
+    },
+    MuiCardContent: {
+      root: {
+        padding: 8
+      }
+    },
+    MuiCardMedia: {
+      img: {
+        objectFit: 'fill'
+      },
+      media: {
+        width: '90%',
+        margin: '0 auto'
       }
     }
   }

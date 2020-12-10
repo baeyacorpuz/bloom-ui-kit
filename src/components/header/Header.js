@@ -1,5 +1,4 @@
-import { Avatar, Collapse, Divider, Drawer, Hidden, List, ListItem, ListItemAvatar, ListItemText, makeStyles, Typography, useTheme } from '@material-ui/core';
-import { ExpandLess, ExpandMore  } from '@material-ui/icons';
+import { Collapse, Drawer, Hidden, List, ListItem, ListItemText, makeStyles, Typography, useTheme } from '@material-ui/core';
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { Menu } from '../../routes/Menu';
@@ -69,11 +68,6 @@ const Header = (props) => {
       [key]: !open[key]
     })
   };
-
-  const navigate = (to) => {
-    console.log(to);
-    history.push(`${to}`)
-  }
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -160,9 +154,9 @@ const Header = (props) => {
                   </div>
                 ))}
               </List>
-              <ListItem button onClick={() => history.push('/settings')}>
+              <ListItem button onClick={() => history.push('/about')}>
                 <ListItemText>
-                  <Typography variant="overline">Settings</Typography>
+                  <Typography variant="overline">About</Typography>
                 </ListItemText>
               </ListItem>
             </div>
