@@ -4,6 +4,9 @@ import Placeholder from '../components/common/placeholder/Placeholder';
 import Settings from '../components/home/Setting';
 import Library from '../components/pokemon/Library';
 import Pokemon from '../components/pokemon/Pokemon';
+import RandomPokemon from '../components/pokemon/RandomGenerator';
+import Type from '../components/pokemon/Type';
+import Types from '../components/pokemon/Types';
 // import Home from '../components/home/Home';
 // import Dashboard from '../components/hospital/dashboard/Dashboard';
 // import Department from '../components/hospital/department/Department';
@@ -11,9 +14,11 @@ import Pokemon from '../components/pokemon/Pokemon';
 const RouteBlock = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Placeholder} />
+      <Route exact path="/" component={RandomPokemon} />
       <Route exact path="/about" component={Settings} />
       <Route exact path="/pokemon" component={Library} />
+      <Route exact path="/pokemon/types" component={Types} />
+      <Route exact path="/pokemon/type/:name" component={Type} />
       <Route exact path="/pokemon/:id" component={Pokemon} />
       {/* <Route exact path="/" component={Home} />
       <Route path="/hospital/dashboard" component={Dashboard} />

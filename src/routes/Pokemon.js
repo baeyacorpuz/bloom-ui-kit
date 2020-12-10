@@ -9,8 +9,12 @@ export const getResources = async () => {
   return apiResponse;
 };
 
-export const getPokemonListing = async () => {
-  const apiResponse = await axios.get(process.env.REACT_APP_POKEAPI + '/pokemon')
+export const getPokemonListing = async (offset) => {
+  const params = {
+    offset: 20,
+    limit: 20
+  }
+  const apiResponse = await axios.get(process.env.REACT_APP_POKEAPI + '/pokemon?', params)
   .then((response) => response)
   .catch((error) => error.response)
 

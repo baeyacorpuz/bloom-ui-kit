@@ -126,7 +126,7 @@ const theme = createMuiTheme({
       },
       media: {
         width: '90%',
-        margin: '0 auto'
+        margin: '25px auto'
       }
     }
   }
