@@ -36,3 +36,11 @@ export const getTypeByName = async (name) => {
 
 	return apiResponse;
 }
+
+export const getPokemonByResource = async (pokemonId) => {
+	const apiResponse = await P.resource([`/api/v2/pokemon/${pokemonId}`])
+		.then((response) => response)
+		.catch((error) => error.response)
+
+	return apiResponse;
+}
